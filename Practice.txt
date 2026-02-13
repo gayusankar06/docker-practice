@@ -1,0 +1,49 @@
+# DOCKER
+- Docker Images
+- Containers
+- Environment Variables
+- Volumes
+- Networking
+- Logging
+- Debugging
+
+## Build Image
+
+docker build -t practice-app:1.0 .
+
+## Run Container
+
+docker run practice-app:1.0
+
+OUTPUT
+
+Environment: dev
+DB Host: localhost
+Log Level: info
+Application Running...
+
+## Run with Environment Variables
+
+docker run -e APP_ENV=production -e LOG_LEVEL=debug -e DB_HOST=postgres-db practice-app:1.0
+
+## Created Volume 
+
+docker volume create app-storage
+
+Running it:
+
+docker run -it -v app-storage:/app/data practice-app:1.0
+
+Creating File:
+
+echo"Docker Volume Test"> /app/data/test.txt
+exit
+
+
+## Remove Container
+
+docker rm <container_id>
+
+## Network Example
+
+docker network create app-network
